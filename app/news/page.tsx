@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import Placeholder from "@/components/Placeholder";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = { title: "Transmissions" };
 
@@ -49,7 +50,7 @@ export default function NewsPage() {
               <article className="group cursor-pointer overflow-hidden rounded-lg border border-line bg-panel transition-colors hover:border-teal">
                 {p.photo ? (
                   <div className="relative aspect-[16/9]">
-                    <Image src={p.photo} alt={p.alt ?? p.title} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={asset(p.photo)} alt={p.alt ?? p.title} fill sizes="(max-width: 640px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
                 ) : (
                   <div className="p-4 pb-0">

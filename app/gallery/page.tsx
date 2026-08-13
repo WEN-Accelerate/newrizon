@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Reveal from "@/components/Reveal";
 import { gallery } from "@/content/site";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = { title: "Gallery — Moments from the Movement" };
 
@@ -28,7 +29,7 @@ export default function GalleryPage() {
               <figure className="break-inside-avoid overflow-hidden rounded-lg border border-line bg-panel">
                 <div className="relative w-full" style={{ aspectRatio: g.ratio }}>
                   <Image
-                    src={g.photo}
+                    src={asset(g.photo)}
                     alt={g.caption}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

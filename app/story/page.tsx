@@ -5,6 +5,7 @@ import SectionHeading from "@/components/SectionHeading";
 import Placeholder from "@/components/Placeholder";
 import Astronaut from "@/components/graphics/Astronaut";
 import { site, values, team, legalCards } from "@/content/site";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = { title: "About — The Spark Behind Earthizen" };
 
@@ -74,7 +75,7 @@ export default function StoryPage() {
               </div>
               {"photo" in b.media ? (
                 <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-line">
-                  <Image src={b.media.photo!} alt={b.media.alt!} fill sizes="(max-width: 768px) 100vw, 560px" className="object-cover" />
+                  <Image src={asset(b.media.photo!)} alt={b.media.alt!} fill sizes="(max-width: 768px) 100vw, 560px" className="object-cover" />
                 </div>
               ) : (
                 <Placeholder label={b.media.placeholder!} ratio="3/2" />

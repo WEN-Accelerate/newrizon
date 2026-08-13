@@ -7,6 +7,7 @@ import MissionPatch from "@/components/graphics/MissionPatch";
 import { PatchIcon } from "@/components/PatchIcons";
 import FAQ from "@/components/FAQ";
 import { programmes } from "@/content/site";
+import { asset } from "@/lib/asset";
 
 export function generateStaticParams() {
   return programmes.map((p) => ({ slug: p.slug }));
@@ -70,7 +71,7 @@ export default async function ProgrammePage({ params }: { params: Promise<{ slug
           </Reveal>
           <Reveal>
             <div className="relative aspect-[3/2] overflow-hidden rounded-lg border border-line">
-              <Image src={p.photo} alt={p.photoAlt} fill sizes="(max-width: 768px) 100vw, 640px" className="object-cover" />
+              <Image src={asset(p.photo)} alt={p.photoAlt} fill sizes="(max-width: 768px) 100vw, 640px" className="object-cover" />
             </div>
           </Reveal>
         </div>

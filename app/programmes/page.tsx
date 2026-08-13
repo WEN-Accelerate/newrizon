@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import MissionPatch from "@/components/graphics/MissionPatch";
 import { PatchIcon } from "@/components/PatchIcons";
 import { programmes } from "@/content/site";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = { title: "Programmes" };
 
@@ -56,7 +57,7 @@ export default function ProgrammesPage() {
               </div>
               <div className="relative hidden aspect-[3/2] overflow-hidden rounded-md md:block">
                 <Image
-                  src={p.photo}
+                  src={asset(p.photo)}
                   alt={p.photoAlt}
                   fill
                   sizes="280px"

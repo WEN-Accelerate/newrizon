@@ -10,6 +10,7 @@ import Constellation from "@/components/Constellation";
 import FAQ from "@/components/FAQ";
 import { PatchIcon } from "@/components/PatchIcons";
 import { site, values, programmes, targets, roadmap, stories, faqs } from "@/content/site";
+import { asset } from "@/lib/asset";
 
 export default function Home() {
   return (
@@ -60,7 +61,7 @@ export default function Home() {
           <Reveal>
             <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-line">
               <Image
-                src="/photos/podium-address.jpg"
+                src={asset("/photos/podium-address.jpg")}
                 alt="Group Captain Shubhanshu Shukla addressing students at a space-education event"
                 fill
                 sizes="(max-width: 768px) 100vw, 560px"
