@@ -1,37 +1,53 @@
 import Link from "next/link";
+import Image from "next/image";
 import HeroOrbit from "@/components/HeroOrbit";
-import Marquee from "@/components/Marquee";
 import Reveal from "@/components/Reveal";
 import Counter from "@/components/Counter";
 import SectionHeading from "@/components/SectionHeading";
-import Placeholder from "@/components/Placeholder";
 import MissionPatch from "@/components/graphics/MissionPatch";
 import Satellite from "@/components/graphics/Satellite";
 import Constellation from "@/components/Constellation";
 import FAQ from "@/components/FAQ";
-import { RocketIcon, BookIcon, SatIcon } from "@/components/PatchIcons";
-import { missions, stats, audiences, testimonials, faqs } from "@/content/site";
-
-const patchIcons = [<RocketIcon key="r" />, <BookIcon key="b" />, <SatIcon key="s" />];
+import { PatchIcon } from "@/components/PatchIcons";
+import { site, values, programmes, targets, roadmap, stories, faqs } from "@/content/site";
 
 export default function Home() {
   return (
     <>
       <HeroOrbit />
-      <Marquee />
 
-      {/* Foundation in numbers */}
+      {/* Vision & Mission */}
+      <section className="border-b border-line bg-panel">
+        <div className="mx-auto grid max-w-6xl gap-6 px-6 py-16 md:grid-cols-2">
+          <Reveal>
+            <div className="h-full rounded-lg border border-line bg-panel2 p-8">
+              <p className="eyebrow text-saffron">Vision</p>
+              <p className="mt-4 text-lg leading-relaxed">{site.vision}</p>
+            </div>
+          </Reveal>
+          <Reveal delay={120}>
+            <div className="h-full rounded-lg border border-line bg-panel2 p-8">
+              <p className="eyebrow text-teal">Mission</p>
+              <p className="mt-4 text-lg leading-relaxed">{site.mission}</p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 5 Core Values */}
       <section className="mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading eyebrow="Transmission 01 · In numbers" title="A constellation, growing" />
-        <div className="mt-12 grid grid-cols-2 gap-6 lg:grid-cols-4">
-          {stats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 100}>
-              <div className="rounded-lg border border-line bg-panel p-6">
-                <p className="text-4xl font-extrabold text-saffron md:text-5xl">
-                  <Counter to={s.value} suffix={s.suffix} />
-                </p>
-                <p className="mt-2 text-sm text-comms">{s.label}</p>
-                <p className="eyebrow mt-1 !text-[9px] text-comms/50">[placeholder figure]</p>
+        <SectionHeading
+          eyebrow="Transmission 01 · Core values"
+          title="Five values, one identity: Earthizen"
+          lede={`“${site.heroQuote}”`}
+        />
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+          {values.map((v, i) => (
+            <Reveal key={v.name} delay={i * 80}>
+              <div className="h-full rounded-lg border border-line bg-panel p-5 transition-colors hover:border-saffron">
+                <p className="font-mono text-xs text-saffron">{String(i + 1).padStart(2, "0")}</p>
+                <h3 className="mt-2 font-bold">{v.name}</h3>
+                <p className="mt-2 text-xs leading-relaxed text-comms">{v.body}</p>
               </div>
             </Reveal>
           ))}
@@ -42,50 +58,61 @@ export default function Home() {
       <section className="border-y border-line bg-panel">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-24 md:grid-cols-2">
           <Reveal>
-            <Placeholder label="PHOTO · Founder portrait in flight suit · 4:5" ratio="4/5" />
+            <div className="relative aspect-[4/5] overflow-hidden rounded-lg border border-line">
+              <Image
+                src="/photos/podium-address.jpg"
+                alt="Group Captain Shubhanshu Shukla addressing students at a space-education event"
+                fill
+                sizes="(max-width: 768px) 100vw, 560px"
+                className="object-cover"
+              />
+            </div>
           </Reveal>
           <Reveal delay={150}>
-            <p className="eyebrow text-saffron">The founder</p>
+            <p className="eyebrow text-saffron">The spark behind Earthizen</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl" style={{ textWrap: "balance" }}>
-              From a small town in India to the top of a rocket.
+              {site.founder}
             </h2>
+            <blockquote className="mt-5 border-l-2 border-saffron pl-5 text-lg italic leading-relaxed text-star">
+              “{site.founderQuote}”
+            </blockquote>
             <p className="mt-5 text-comms">
-              [Founder hook placeholder — two sentences.] An ordinary childhood, years of discipline,
-              and one launch that changed what a generation believes is possible. Then, from orbit,
-              a promise: bring the stars home.
+              An Indian Air Force test pilot who became one of India&apos;s astronauts — and came back
+              from orbit carrying one conviction: the next generation must learn to think like citizens
+              of Earth.
             </p>
             <Link href="/story" className="mt-8 inline-block font-bold text-teal hover:underline">
-              Read the Ascent →
+              Read the full story →
             </Link>
           </Reveal>
         </div>
       </section>
 
-      {/* Patch wall teaser */}
+      {/* Programme patch wall */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
-          eyebrow="Transmission 02 · Active missions"
-          title="Programs are missions. Missions have patches."
-          lede="In the NASA/ISRO tradition, every program carries its own embroidered patch. Pick yours."
+          eyebrow="Transmission 02 · Programme verticals"
+          title="Four missions. Four patches. One Earth."
+          lede="Empowering youth through education, technology, community engagement, and future-focused innovation — each vertical carries its own mission patch in the ISRO tradition."
         />
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {missions.map((m, i) => (
-            <Reveal key={m.slug} delay={i * 120}>
+        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          {programmes.map((p, i) => (
+            <Reveal key={p.slug} delay={i * 100}>
               <Link
-                href={`/missions/${m.slug}`}
-                className="group block rounded-lg border border-line bg-panel p-8 text-center transition-colors hover:border-saffron"
+                href={`/programmes/${p.slug}`}
+                className="group block h-full rounded-lg border border-line bg-panel p-6 text-center transition-colors hover:border-saffron"
               >
                 <MissionPatch
-                  name={m.name}
-                  code={m.code}
-                  accent={m.accent}
-                  className="mx-auto w-44 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-105"
+                  name={p.name}
+                  code={p.code}
+                  accent={p.accent}
+                  className="mx-auto w-36 transition-transform duration-300 group-hover:rotate-3 group-hover:scale-105"
                 >
-                  {patchIcons[i]}
+                  <PatchIcon slug={p.slug} />
                 </MissionPatch>
-                <h3 className="mt-6 text-lg font-bold">{m.name}</h3>
-                <p className="mt-2 text-sm text-comms">{m.objective}</p>
-                <p className="eyebrow mt-4 !text-[10px] text-teal">{m.status}</p>
+                <h3 className="mt-5 text-lg font-bold">{p.name}</h3>
+                <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-teal">{p.vertical}</p>
+                <p className="mt-3 text-sm text-comms">{p.objective}</p>
               </Link>
             </Reveal>
           ))}
@@ -104,35 +131,83 @@ export default function Home() {
               className="mt-6 text-3xl font-bold leading-snug md:text-5xl"
               style={{ textWrap: "balance" }}
             >
-              “From up there, you can’t see borders.{" "}
-              <span className="text-saffron">You can only see how much there is to do.</span>”
+              “I looked down at Earth. I could not see any borders.{" "}
+              <span className="text-saffron">Only one planet. Only one home.</span>”
             </blockquote>
-            <p className="mt-6 font-mono text-sm text-comms">— [Founder name] · [placeholder quote]</p>
+            <p className="mt-6 font-mono text-sm text-comms">— {site.founder}, Founder</p>
           </Reveal>
         </div>
       </section>
 
-      {/* Who's aboard */}
+      {/* Five-year targets */}
       <section className="mx-auto max-w-6xl px-6 py-24">
         <SectionHeading
-          eyebrow="Transmission 03 · Who's aboard"
-          title="Every mission needs a crew. Which seat is yours?"
+          eyebrow="Transmission 03 · Five-year targets"
+          title="Ambitious goals. Measurable impact. One Earth at a time."
         />
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {audiences.map((a, i) => (
-            <Reveal key={a.key} delay={i * 100}>
-              <Link
-                href="/join"
-                className="group flex h-full flex-col rounded-lg border border-line bg-panel p-6 transition-colors hover:border-teal"
-              >
-                <p className="font-mono text-xs text-saffron">SEAT {String(i + 1).padStart(2, "0")}</p>
-                <h3 className="mt-3 text-lg font-bold">{a.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-comms">{a.line}</p>
-                <p className="mt-5 text-sm font-bold text-teal group-hover:underline">{a.action} →</p>
-              </Link>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {targets.map((t, i) => (
+            <Reveal key={t.label} delay={(i % 3) * 100}>
+              <div className="h-full rounded-lg border border-line bg-panel p-6">
+                <p className="text-4xl font-extrabold text-saffron">
+                  <Counter to={t.value} suffix={t.suffix} />
+                </p>
+                <p className="mt-1 font-bold">{t.label}</p>
+                <p className="mt-2 text-sm text-comms">{t.body}</p>
+              </div>
             </Reveal>
           ))}
         </div>
+      </section>
+
+      {/* Roadmap */}
+      <section className="border-y border-line bg-panel">
+        <div className="mx-auto max-w-6xl px-6 py-24">
+          <SectionHeading eyebrow="Transmission 04 · Expansion roadmap" title="From Indian metros to a global movement" />
+          <div className="mt-12 grid gap-6 md:grid-cols-3">
+            {roadmap.map((r, i) => (
+              <Reveal key={r.phase} delay={i * 120}>
+                <div className="h-full rounded-lg border border-line bg-panel2 p-7">
+                  <p className="eyebrow text-saffron">{r.phase}</p>
+                  <p className="mt-2 font-mono text-xs text-teal">{r.when}</p>
+                  <ul className="mt-5 space-y-2.5">
+                    {r.items.map((item) => (
+                      <li key={item} className="flex items-start gap-3 text-sm text-comms">
+                        <span className="mt-0.5 text-teal" aria-hidden="true">▸</span> {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Stories of change teaser */}
+      <section className="mx-auto max-w-6xl px-6 py-24">
+        <SectionHeading eyebrow="Transmission 05 · Stories of change" title="Impact from the field" />
+        <div className="mt-12 grid gap-6 md:grid-cols-3">
+          {stories.slice(0, 3).map((s, i) => (
+            <Reveal key={s.title} delay={i * 120}>
+              <figure className="flex h-full flex-col rounded-lg border border-line bg-panel p-6">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-saffron">{s.programme}</p>
+                <blockquote className="mt-3 flex-1">
+                  <p className="font-bold">{s.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-comms">{s.body}</p>
+                </blockquote>
+                <figcaption className="mt-4 border-t border-line pt-3 font-mono text-xs text-teal">
+                  {s.where}
+                </figcaption>
+              </figure>
+            </Reveal>
+          ))}
+        </div>
+        <Reveal>
+          <Link href="/impact" className="mt-10 inline-block font-bold text-teal hover:underline">
+            All stories in the Mission Log →
+          </Link>
+        </Reveal>
       </section>
 
       {/* Constellation teaser */}
@@ -144,11 +219,11 @@ export default function Home() {
           <Reveal delay={150}>
             <p className="eyebrow text-saffron">The Constellation of Impact</p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight md:text-4xl" style={{ textWrap: "balance" }}>
-              Every star is a school. Every line is a story.
+              Every star is a school. Every line crosses a border.
             </h2>
             <p className="mt-5 text-comms">
-              Each school reached, scholar funded, and camp launched becomes a star in a night sky
-              over India — and the sky keeps filling. Watch it grow in the Mission Log.
+              Every partner school, Community Lab, and Borderless Classroom becomes a star in a night
+              sky over Earth — 1,000 schools by Year 3, and the sky keeps filling.
             </p>
             <Link href="/impact" className="mt-8 inline-block font-bold text-teal hover:underline">
               Open the Mission Log →
@@ -157,27 +232,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading eyebrow="Transmission 04 · Crew reports" title="Voices from the ground" />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 120}>
-              <figure className="flex h-full flex-col rounded-lg border border-line bg-panel p-6">
-                <blockquote className="flex-1 text-sm leading-relaxed text-star">“{t.quote}”</blockquote>
-                <figcaption className="mt-5 border-t border-line pt-4">
-                  <p className="text-sm font-bold">{t.name}</p>
-                  <p className="text-xs text-comms">{t.role}</p>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="mx-auto max-w-3xl px-6 pb-24">
-        <SectionHeading eyebrow="Transmission 05 · Pre-flight checks" title="Frequently asked questions" />
+      <section className="mx-auto max-w-3xl px-6 py-24">
+        <SectionHeading eyebrow="Transmission 06 · Pre-flight checks" title="Frequently asked questions" />
         <div className="mt-10">
           <FAQ items={faqs} />
         </div>
@@ -187,15 +244,19 @@ export default function Home() {
       <section className="border-t border-line bg-panel2">
         <div className="mx-auto max-w-4xl px-6 py-24 text-center">
           <Reveal>
-            <h2 className="text-4xl font-extrabold uppercase tracking-tight md:text-5xl" style={{ textWrap: "balance" }}>
-              Every mission needs <span className="text-saffron">a crew.</span>
+            <p className="mx-auto max-w-2xl text-lg italic leading-relaxed text-comms">“{site.closingQuote}”</p>
+            <h2 className="mt-10 text-4xl font-extrabold uppercase tracking-tight md:text-5xl" style={{ textWrap: "balance" }}>
+              Become an <span className="text-saffron">Earthizen.</span>
             </h2>
             <div className="mt-9 flex flex-wrap justify-center gap-4">
               <Link href="/join" className="rounded-full bg-saffron px-8 py-4 font-bold text-void transition-transform hover:scale-105">
-                Join the Crew
+                Join as Earthizen
+              </Link>
+              <Link href="/join" className="rounded-full border border-line px-8 py-4 font-bold hover:border-teal hover:text-teal">
+                Partner a School
               </Link>
               <Link href="/donate" className="rounded-full border border-line px-8 py-4 font-bold hover:border-teal hover:text-teal">
-                Fuel the Mission
+                CSR &amp; Funding
               </Link>
             </div>
           </Reveal>

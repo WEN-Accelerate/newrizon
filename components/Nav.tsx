@@ -5,10 +5,10 @@ import { useState } from "react";
 import { site } from "@/content/site";
 
 const links = [
-  { href: "/story", label: "The Ascent" },
-  { href: "/missions", label: "Missions" },
-  { href: "/impact", label: "Mission Log" },
-  { href: "/join", label: "Join the Crew" },
+  { href: "/story", label: "About" },
+  { href: "/programmes", label: "Programmes" },
+  { href: "/impact", label: "Impact" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/news", label: "Transmissions" },
   { href: "/contact", label: "Contact" },
 ];
@@ -20,9 +20,10 @@ export default function Nav() {
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6">
         <Link href="/" className="flex items-center gap-3">
           <svg viewBox="0 0 40 40" className="h-8 w-8" aria-hidden="true">
-            <circle cx="20" cy="20" r="18" fill="none" stroke="#f58a2e" strokeWidth="2.5" />
-            <circle cx="20" cy="20" r="6" fill="#46a8a0" />
-            <circle cx="33" cy="12" r="2.5" fill="#f58a2e" />
+            <circle cx="20" cy="20" r="12" fill="#16345e" stroke="#eef2f9" strokeWidth="1.8" />
+            <path d="M8 20 H32 M11 13 H29 M11 27 H29" stroke="#eef2f9" strokeWidth="1.2" opacity="0.8" />
+            <ellipse cx="20" cy="20" rx="18" ry="6" fill="none" stroke="#f58a2e" strokeWidth="2" transform="rotate(-18 20 20)" />
+            <circle cx="34" cy="12" r="2.5" fill="#f58a2e" />
           </svg>
           <span className="text-sm font-bold uppercase tracking-widest">{site.name}</span>
         </Link>
@@ -33,10 +34,10 @@ export default function Nav() {
             </Link>
           ))}
           <Link
-            href="/donate"
+            href="/join"
             className="rounded-full bg-saffron px-5 py-2 text-sm font-bold text-void transition-transform hover:scale-105"
           >
-            Fuel the Mission
+            Join the Movement
           </Link>
         </nav>
         <button
@@ -63,11 +64,11 @@ export default function Nav() {
             </Link>
           ))}
           <Link
-            href="/donate"
+            href="/join"
             className="mt-3 inline-block rounded-full bg-saffron px-5 py-2 text-sm font-bold text-void"
             onClick={() => setOpen(false)}
           >
-            Fuel the Mission
+            Join the Movement
           </Link>
         </nav>
       )}

@@ -3,32 +3,9 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import BoardingPass from "@/components/BoardingPass";
 import Astronaut from "@/components/graphics/Astronaut";
-import { audiences, testimonials } from "@/content/site";
+import { audiences } from "@/content/site";
 
-export const metadata: Metadata = { title: "Join the Crew" };
-
-const doors: Record<string, string[]> = {
-  students: [
-    "Apply for the Antariksh Scholarship",
-    "Join a Mission Udaan camp near you",
-    "Send a Postcard to Orbit",
-  ],
-  educators: [
-    "Nominate your school for a Prithvi lab",
-    "Train as a certified Mission Specialist",
-    "Host a launch watch-party",
-  ],
-  volunteers: [
-    "Mentor a scholar (2 hrs/month)",
-    "Run events in your district",
-    "Lend professional skills to mission ops",
-  ],
-  partners: [
-    "Sponsor a mission or a full constellation",
-    "Co-brand a mission patch",
-    "CSR-compliant reporting, quarterly",
-  ],
-};
+export const metadata: Metadata = { title: "Join the Movement" };
 
 export default function JoinPage() {
   return (
@@ -38,10 +15,11 @@ export default function JoinPage() {
           <div>
             <p className="eyebrow text-saffron">Crew recruitment · Open</p>
             <h1 className="mt-4 max-w-2xl text-4xl font-extrabold uppercase tracking-tight md:text-6xl" style={{ textWrap: "balance" }}>
-              Every mission needs a crew
+              Join the movement
             </h1>
             <p className="mt-5 max-w-xl text-comms">
-              Pick your seat. Whichever door you walk through, you board the same ship.
+              Pick your door — student, school, mentor, or partner. Whichever you walk through, you
+              board the same ship: one Earth, one crew.
             </p>
           </div>
           <div className="hidden w-44 animate-float md:block" aria-hidden="true">
@@ -55,10 +33,11 @@ export default function JoinPage() {
           {audiences.map((a, i) => (
             <Reveal key={a.key} delay={i * 100}>
               <div className="flex h-full flex-col rounded-lg border border-line bg-panel p-8 transition-colors hover:border-teal">
-                <p className="font-mono text-xs text-saffron">SEAT {String(i + 1).padStart(2, "0")}</p>
+                <p className="font-mono text-xs text-saffron">DOOR {String(i + 1).padStart(2, "0")}</p>
                 <h2 className="mt-3 text-2xl font-bold">{a.title}</h2>
+                <p className="mt-2 text-sm text-comms">{a.line}</p>
                 <ul className="mt-5 flex-1 space-y-3">
-                  {doors[a.key].map((d) => (
+                  {a.points.map((d) => (
                     <li key={d} className="flex items-start gap-3 text-sm text-comms">
                       <span className="mt-0.5 text-teal" aria-hidden="true">✦</span> {d}
                     </li>
@@ -67,7 +46,7 @@ export default function JoinPage() {
                 <button className="mt-7 w-fit rounded-full bg-saffron px-6 py-3 text-sm font-bold text-void transition-transform hover:scale-105">
                   {a.action} →
                 </button>
-                <p className="eyebrow mt-3 !text-[9px] text-comms/60">[links to real form when ready]</p>
+                <p className="eyebrow mt-3 !text-[9px] text-comms/60">[links to application form when live]</p>
               </div>
             </Reveal>
           ))}
@@ -79,8 +58,8 @@ export default function JoinPage() {
           <Reveal>
             <SectionHeading
               eyebrow="Welcome aboard"
-              title="Join anything, get your Boarding Pass"
-              lede="Sign up as crew — newsletter, volunteer, donor, scholar — and receive a personalized boarding pass with your own crew number. Share it; every pass someone sees is another child who looks up."
+              title="Join anything, get your Earthizen Pass"
+              lede="Sign up in any role — student, educator, mentor, partner — and receive a personalized boarding pass with your own crew number. Share it; every pass someone sees is another child who looks up."
             />
           </Reveal>
           <Reveal delay={150}>
@@ -89,21 +68,14 @@ export default function JoinPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading eyebrow="Crew reports" title="Already aboard" />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <Reveal key={t.name} delay={i * 120}>
-              <figure className="flex h-full flex-col rounded-lg border border-line bg-panel p-6">
-                <blockquote className="flex-1 text-sm leading-relaxed">“{t.quote}”</blockquote>
-                <figcaption className="mt-5 border-t border-line pt-4">
-                  <p className="text-sm font-bold">{t.name}</p>
-                  <p className="text-xs text-comms">{t.role}</p>
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
+      <section className="mx-auto max-w-4xl px-6 py-24 text-center">
+        <Reveal>
+          <p className="eyebrow text-saffron">One movement, many doors</p>
+          <p className="mx-auto mt-6 max-w-2xl text-lg italic leading-relaxed text-comms">
+            “Every impact story begins with one school, one classroom, one child who decides to think
+            like a planetary citizen.”
+          </p>
+        </Reveal>
       </section>
     </>
   );

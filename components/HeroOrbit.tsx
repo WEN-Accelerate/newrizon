@@ -148,25 +148,30 @@ export default function HeroOrbit() {
         <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col justify-center px-6">
           <p className="eyebrow text-saffron">{phase}</p>
           <h1
-            className="mt-5 max-w-3xl text-5xl font-extrabold uppercase leading-[1.02] tracking-tight md:text-7xl"
+            className="mt-5 max-w-3xl text-5xl font-extrabold uppercase leading-[1.05] tracking-tight md:text-7xl"
             style={{ textWrap: "balance" }}
           >
-            The ceiling is not
-            <span className="text-saffron"> where they told you</span> it is.
+            No Borders.
+            <br />
+            One <span className="text-saffron">Earth.</span>
+            <br />
+            Infinite Futures.
           </h1>
-          <p className="mt-6 max-w-xl text-lg text-comms">{site.mission}</p>
+          <p className="mt-6 max-w-xl text-lg text-comms">
+            “{site.heroQuote}” — {site.mission}
+          </p>
           <div className="mt-9 flex flex-wrap gap-4">
             <Link
               href="/join"
               className="rounded-full bg-saffron px-7 py-3.5 font-bold text-void transition-transform hover:scale-105"
             >
-              Join the Crew
+              Join the Movement
             </Link>
             <Link
-              href="/story"
+              href="/join"
               className="rounded-full border border-line px-7 py-3.5 font-bold text-star transition-colors hover:border-teal hover:text-teal"
             >
-              Watch the story ↗
+              Partner a School
             </Link>
           </div>
           {!reduced && (

@@ -1,15 +1,15 @@
-/** Sample of the shareable Crew Boarding Pass every new member receives. */
+/** Sample of the shareable Earthizen Pass every new member receives. */
 export default function BoardingPass({ className = "" }: { className?: string }) {
   return (
     <div className={`overflow-hidden rounded-xl border border-line bg-panel2 ${className}`}>
       <div className="flex items-center justify-between border-b border-dashed border-line bg-panel px-6 py-3">
-        <span className="eyebrow !text-[10px] text-saffron">Crew Boarding Pass</span>
-        <span className="eyebrow !text-[10px] text-comms">NO. CR-04721</span>
+        <span className="eyebrow !text-[10px] text-saffron">Earthizen Pass</span>
+        <span className="eyebrow !text-[10px] text-comms">NO. EZ-04721</span>
       </div>
       <div className="grid gap-6 px-6 py-6 sm:grid-cols-[1fr_auto]">
         <div className="space-y-4">
           <div>
-            <p className="eyebrow !text-[10px] text-comms">Crew member</p>
+            <p className="eyebrow !text-[10px] text-comms">Earthizen</p>
             <p className="text-xl font-bold">[Your name here]</p>
           </div>
           <div className="flex gap-10">
@@ -18,12 +18,12 @@ export default function BoardingPass({ className = "" }: { className?: string })
               <p className="font-mono text-sm text-teal">STUDENT</p>
             </div>
             <div>
-              <p className="eyebrow !text-[10px] text-comms">Mission</p>
-              <p className="font-mono text-sm text-teal">ANTARIKSH SCHOLARS</p>
+              <p className="eyebrow !text-[10px] text-comms">Programme</p>
+              <p className="font-mono text-sm text-teal">ORBIT</p>
             </div>
             <div>
-              <p className="eyebrow !text-[10px] text-comms">Gate</p>
-              <p className="font-mono text-sm text-saffron">EARTH → ORBIT</p>
+              <p className="eyebrow !text-[10px] text-comms">Citizenship</p>
+              <p className="font-mono text-sm text-saffron">EARTH</p>
             </div>
           </div>
         </div>

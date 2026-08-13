@@ -8,23 +8,26 @@ export default function Footer() {
   const [sent, setSent] = useState(false);
   return (
     <footer className="border-t border-line bg-panel">
+      <div className="mx-auto border-b border-line px-6 py-10">
+        <p className="mx-auto max-w-3xl text-center text-sm italic leading-relaxed text-comms">
+          “{site.footerLine}”
+        </p>
+      </div>
       <div className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-3">
         <div>
           <p className="text-sm font-bold uppercase tracking-widest">{site.name}</p>
           <p className="mt-3 max-w-xs text-sm text-comms">{site.mission}</p>
-          <p className="eyebrow mt-6 !text-[10px] text-comms">
-            [Registration no. · 80G details placeholder]
-          </p>
+          <p className="eyebrow mt-6 !text-[10px] text-comms">{site.legal}</p>
         </div>
         <nav className="grid grid-cols-2 gap-2 text-sm" aria-label="Footer">
           {[
-            ["/story", "The Ascent"],
-            ["/missions", "Missions"],
-            ["/impact", "Mission Log"],
-            ["/join", "Join the Crew"],
-            ["/donate", "Fuel the Mission"],
+            ["/story", "About"],
+            ["/programmes", "Programmes"],
+            ["/impact", "Impact"],
+            ["/gallery", "Gallery"],
+            ["/join", "Join the Movement"],
+            ["/donate", "CSR & Funding"],
             ["/news", "Transmissions"],
-            ["/events", "Events"],
             ["/contact", "Contact"],
           ].map(([href, label]) => (
             <Link key={href} href={href} className="py-1 text-comms hover:text-star">
@@ -35,7 +38,7 @@ export default function Footer() {
         <div>
           <p className="eyebrow text-saffron">Get transmissions</p>
           {sent ? (
-            <p className="mt-4 font-mono text-sm text-teal">▸ Transmission received. Welcome aboard, crew.</p>
+            <p className="mt-4 font-mono text-sm text-teal">▸ Transmission received. Welcome aboard, Earthizen.</p>
           ) : (
             <form
               className="mt-4 flex gap-2"

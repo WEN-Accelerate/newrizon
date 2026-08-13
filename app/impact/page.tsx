@@ -2,11 +2,10 @@ import type { Metadata } from "next";
 import Reveal from "@/components/Reveal";
 import Counter from "@/components/Counter";
 import SectionHeading from "@/components/SectionHeading";
-import Placeholder from "@/components/Placeholder";
 import Constellation from "@/components/Constellation";
-import { stats, timeline } from "@/content/site";
+import { targets, stories, roadmap } from "@/content/site";
 
-export const metadata: Metadata = { title: "Mission Log" };
+export const metadata: Metadata = { title: "Impact — Mission Log" };
 
 export default function ImpactPage() {
   return (
@@ -14,35 +13,42 @@ export default function ImpactPage() {
       <section className="border-b border-line pt-16">
         <div className="mx-auto max-w-6xl px-6 py-20">
           <p className="eyebrow text-saffron">Mission log</p>
-          <h1 className="mt-4 text-4xl font-extrabold uppercase tracking-tight md:text-6xl">The evidence</h1>
+          <h1 className="mt-4 text-4xl font-extrabold uppercase tracking-tight md:text-6xl">
+            Learning that changes things
+          </h1>
           <p className="mt-5 max-w-xl text-comms">
-            Impact, logged like telemetry: live numbers, a growing constellation, and every audited report in the open.
+            Every number here is a student who thought differently, a community that changed, a border
+            that dissolved a little.
           </p>
         </div>
       </section>
 
+      {/* Five-year targets */}
       <section className="mx-auto max-w-6xl px-6 py-20">
-        <div className="grid grid-cols-2 gap-6 lg:grid-cols-4">
-          {stats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 100}>
-              <div className="rounded-lg border border-line bg-panel p-6 text-center">
+        <SectionHeading eyebrow="Five-year targets" title="The scale we're building" />
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {targets.map((t, i) => (
+            <Reveal key={t.label} delay={(i % 3) * 100}>
+              <div className="h-full rounded-lg border border-line bg-panel p-6">
                 <p className="text-4xl font-extrabold text-saffron md:text-5xl">
-                  <Counter to={s.value} suffix={s.suffix} />
+                  <Counter to={t.value} suffix={t.suffix} />
                 </p>
-                <p className="mt-2 text-sm text-comms">{s.label}</p>
+                <p className="mt-1 font-bold">{t.label}</p>
+                <p className="mt-2 text-sm text-comms">{t.body}</p>
               </div>
             </Reveal>
           ))}
         </div>
       </section>
 
+      {/* Constellation */}
       <section className="border-y border-line bg-panel">
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-24 md:grid-cols-2">
           <Reveal>
             <SectionHeading
               eyebrow="The Constellation of Impact"
-              title="A night sky over India, filling star by star"
-              lede="[Placeholder — becomes an interactive map] Every partner school, funded scholar, and camp is a star; constellations form by state and mission. Filter by year and program when the data pipeline lands."
+              title="A night sky filling star by star"
+              lede="[Becomes an interactive map as data lands] Every partner school, Community Lab, and Borderless Classroom is a star; constellations form by region and programme."
             />
           </Reveal>
           <Reveal delay={150}>
@@ -51,51 +57,63 @@ export default function ImpactPage() {
         </div>
       </section>
 
+      {/* Stories of change */}
       <section className="mx-auto max-w-6xl px-6 py-24">
-        <SectionHeading eyebrow="Story spotlights" title="Three stories from the log" />
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {["Scholar spotlight", "School spotlight", "Teacher spotlight"].map((s, i) => (
-            <Reveal key={s} delay={i * 120}>
-              <div className="rounded-lg border border-line bg-panel p-4">
-                <Placeholder label={`PHOTO · ${s} · 4:3`} ratio="4/3" />
-                <h3 className="mt-4 font-bold">[{s} headline]</h3>
-                <p className="mt-2 text-sm text-comms">[Story placeholder — 2–3 sentences of a real human story.]</p>
-              </div>
+        <SectionHeading eyebrow="Stories of change" title="Impact from the field" />
+        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {stories.map((s, i) => (
+            <Reveal key={s.title} delay={(i % 3) * 100}>
+              <figure className="flex h-full flex-col rounded-lg border border-line bg-panel p-6 transition-colors hover:border-teal">
+                <p className="font-mono text-[10px] uppercase tracking-widest text-saffron">{s.programme}</p>
+                <blockquote className="mt-3 flex-1">
+                  <p className="font-bold">{s.title}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-comms">{s.body}</p>
+                </blockquote>
+                <figcaption className="mt-4 border-t border-line pt-3 font-mono text-xs text-teal">
+                  {s.where}
+                </figcaption>
+              </figure>
             </Reveal>
           ))}
         </div>
       </section>
 
+      {/* Roadmap as flight log */}
       <section className="border-y border-line bg-panel">
         <div className="mx-auto max-w-4xl px-6 py-24">
-          <SectionHeading eyebrow="Flight log" title="Milestones, year by year" />
+          <SectionHeading eyebrow="Flight plan" title="The expansion roadmap" />
           <ol className="mt-12 border-l border-line pl-8">
-            {timeline.map((t) => (
-              <li key={t.event} className="relative pb-8 last:pb-0">
-                <span className="absolute -left-[37px] top-1 h-3 w-3 rounded-full border-2 border-teal bg-void" aria-hidden="true" />
-                <p className="font-mono text-xs text-saffron">{t.year}</p>
-                <p className="mt-1 text-star">{t.event}</p>
+            {roadmap.map((r) => (
+              <li key={r.phase} className="relative pb-10 last:pb-0">
+                <span className="absolute -left-[37px] top-1 h-3 w-3 rounded-full border-2 border-saffron bg-void" aria-hidden="true" />
+                <p className="font-mono text-xs text-saffron">{r.phase} · {r.when}</p>
+                <ul className="mt-3 space-y-1.5">
+                  {r.items.map((item) => (
+                    <li key={item} className="text-sm text-comms">▸ {item}</li>
+                  ))}
+                </ul>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
+      {/* Transparency locker */}
       <section className="mx-auto max-w-4xl px-6 py-24">
         <SectionHeading
-          eyebrow="Transparency locker"
+          eyebrow="Transparency & reporting"
           title="Every rupee, on the record"
-          lede="[Placeholder — attach real PDFs] Annual reports, audited financials, and registration documents."
+          lede="Annual impact reports, audited financials, and quarterly partner briefings — full transparency on how every rupee is deployed. [Documents attach here as they are published.]"
         />
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          {["Annual Report [Year]", "Audited Financials [Year]", "80G Certificate"].map((doc) => (
+          {["Annual Impact Report", "Audited Financials", "Registration Documents"].map((doc) => (
             <a
               key={doc}
               href="#"
               className="rounded-lg border border-line bg-panel p-5 text-sm font-bold transition-colors hover:border-saffron"
             >
               📄 {doc}
-              <span className="eyebrow mt-2 block !text-[9px] text-comms">PDF · placeholder</span>
+              <span className="eyebrow mt-2 block !text-[9px] text-comms">PDF · publishes with first reporting cycle</span>
             </a>
           ))}
         </div>

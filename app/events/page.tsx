@@ -5,9 +5,9 @@ import Satellite from "@/components/graphics/Satellite";
 export const metadata: Metadata = { title: "Events" };
 
 const events = [
-  { code: "EV-01", name: "[Launch watch-party placeholder]", where: "[City / Online]", when: "[Date]" },
-  { code: "EV-02", name: "[District space camp placeholder]", where: "[District]", when: "[Date]" },
-  { code: "EV-03", name: "[Annual Scholars' Summit placeholder]", where: "[Venue]", when: "[Date]" },
+  { code: "EV-01", name: "Global Assembly for Schools — UN-style inter-school summit", where: "[Venue / Virtual]", when: "[Date]" },
+  { code: "EV-02", name: "One Earth Summit — 50+ nations by Year 4", where: "[Venue]", when: "[Date]" },
+  { code: "EV-03", name: "Code the Future bootcamp — next cohort", where: "[City]", when: "[Date]" },
 ];
 
 export default function EventsPage() {
@@ -20,7 +20,7 @@ export default function EventsPage() {
         <div className="mx-auto max-w-6xl px-6 py-20">
           <p className="eyebrow text-saffron">Mission operations</p>
           <h1 className="mt-4 text-4xl font-extrabold uppercase tracking-tight md:text-6xl">Upcoming operations</h1>
-          <p className="mt-5 max-w-xl text-comms">Watch-parties, camps, and summits — every event runs like a mission, countdown included.</p>
+          <p className="mt-5 max-w-xl text-comms">Summits, bootcamps, and assemblies — every event runs like a mission, countdown included.</p>
         </div>
       </section>
       <section className="mx-auto max-w-4xl space-y-5 px-6 py-20">

@@ -10,7 +10,7 @@ export default function ContactPage() {
         <div className="mx-auto max-w-6xl px-6 py-20">
           <p className="eyebrow text-saffron">Comms</p>
           <h1 className="mt-4 text-4xl font-extrabold uppercase tracking-tight md:text-6xl">Open a channel</h1>
-          <p className="mt-5 max-w-xl text-comms">Schools, press, partners, future crew — all frequencies monitored.</p>
+          <p className="mt-5 max-w-xl text-comms">Schools, press, CSR partners, future Earthizens — all frequencies monitored.</p>
         </div>
       </section>
       <section className="mx-auto grid max-w-6xl gap-16 px-6 py-20 md:grid-cols-[1fr_320px]">
@@ -58,12 +58,16 @@ export default function ContactPage() {
         )}
         <aside className="space-y-6 text-sm">
           <div>
-            <p className="eyebrow text-saffron">Ground station</p>
-            <p className="mt-2 text-comms">[Office address placeholder]</p>
+            <p className="eyebrow text-saffron">National HQ</p>
+            <p className="mt-2 text-comms">New Delhi, India<br />[Street address placeholder]</p>
+          </div>
+          <div>
+            <p className="eyebrow text-saffron">Phase 1 operations</p>
+            <p className="mt-2 text-comms">Mumbai · Bengaluru · Pune</p>
           </div>
           <div>
             <p className="eyebrow text-saffron">Direct frequencies</p>
-            <p className="mt-2 text-comms">[hello@foundation.org]<br />[+91 — phone placeholder]</p>
+            <p className="mt-2 text-comms">[hello@earthizen.org]<br />[+91 — phone placeholder]</p>
           </div>
           <div>
             <p className="eyebrow text-saffron">Social</p>
