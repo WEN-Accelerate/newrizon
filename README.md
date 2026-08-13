@@ -12,6 +12,23 @@ Website for a foundation started by a famous astronaut of Indian origin. Concept
 ## Status
 
 - [x] Benchmarking, concept, skeleton, architecture
-- [ ] Content from the foundation (see `[CONTENT]` slots in the skeleton)
-- [ ] Next.js scaffold + design system (mission patches, tokens)
-- [ ] Page builds
+- [x] Next.js scaffold + design system (mission patches, tokens)
+- [x] Page builds with placeholder content, custom SVG graphics, and animations
+- [ ] Content from the foundation (see `[CONTENT]` slots and `content/site.ts`)
+- [ ] Real photography swapped into `Placeholder` components
+- [ ] Razorpay checkout, forms backend, Hindi locale
+
+## Running locally
+
+```bash
+npm install
+npm run dev     # http://localhost:3000
+npm run build   # production build (all pages static)
+```
+
+## Where things live
+
+- `content/site.ts` — every placeholder string, stat, program, and FAQ; swap real content here first
+- `components/graphics/` — astronaut, rocket, Earth, satellite, and generative mission-patch SVGs
+- `components/` — sections, scroll-to-orbit hero, starfield, counters, boarding pass
+- `app/` — one folder per page, matching `docs/03-sitemap-skeleton.md`
